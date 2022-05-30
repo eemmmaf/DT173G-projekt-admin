@@ -31,7 +31,7 @@ function htmlCopy(){
 function jsCopy(){
     return src(files.jsPath)
     .pipe(concat('main.js'))
-    .pipe(terser())
+    //.pipe(terser())
     .pipe(dest('pub/js'));
 }
 
