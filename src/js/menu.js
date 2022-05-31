@@ -23,11 +23,8 @@ if (foodSubmitBtn) {
 //Läser in Mat och dryck när sidan läses in 
 window.onload = init;
 function init() {
-    if (localStorage.getItem("token") != null) {
-        localStorage.getItem("token");
         getFood();
         getDrinks();
-    }
 }
 
 //Läser in maträtterna från webbtjänsten foodapi
@@ -37,8 +34,7 @@ function getFood() {
         headers: {
             "content-type": "application/json",
             "token": token
-        },
-        body: jsonStr
+        }
     })
         .then(response => response.json())
         .then(data => showFood(data))
@@ -89,9 +85,9 @@ function addFood(event) {
     if (localStorage.getItem("token") === null) {
         return;
     }
+    event.prevent.default();
     //Token från localstorage
     let token = localStorage.getItem("token");
-    event.prevent.default();
 
     //Sparar inmatad data i variabler
     let foodName = foodNameInput.value;
