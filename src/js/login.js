@@ -3,7 +3,6 @@
 //Endpoint
 let loginUrl = "http://localhost/projekt_webservice/loginapi.php";
 
-
 //Variabler för inputfält och knappar
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
@@ -42,8 +41,8 @@ function logIn(event) {
             let status = response.status;
 
             if (status == 200) {
-                localStorage.setItem("token", data.token);
                 window.location.replace("http://localhost:3000/index.html");
+                localStorage.setItem("token", data.token);
             } else {
                 localStorage.removeItem("token");
             }
