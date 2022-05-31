@@ -1,6 +1,5 @@
 "use strict";
 
-
 let bookingUrl = "http://localhost/projekt_webservice/bookingapi.php";
 //variabler för bokningens inputfält
 const fnameInput = document.getElementById("fname");
@@ -18,16 +17,16 @@ const changeBtn = document.getElementById("change-btn");
 let outputMessage = document.getElementById("message-output");
 //Dagens datum
 let today = new Date().toISOString().slice(0, 10);
-//Token från localstorage
-let token = localStorage.getItem("token");
 
 //Läser in bokningar vid initiering
 window.onload = init();
 function init() {
-    if (localStorage.getItem("token") == null) {
+    if (localStorage.getItem("token") != null) {
+        getBookings();
+    }
+    else {
         window.location.replace("http://localhost:3000/login.html");
     }
-    getBookings();
 }
 
 //Läser in kurserna från webbtjänsten coursesapi
@@ -37,7 +36,7 @@ function getBookings() {
     }
     let token = localStorage.getItem("token");
 
-    fetch(bookingUrl,{
+    fetch(bookingUrl, {
         method: "GET",
         headers: {
             "token": token,
@@ -58,9 +57,9 @@ function showBookings(bookings) {
     }
     const bookingOutput = document.getElementById("booking-td");
 
-        //Utskrift
-        bookings.forEach(b => {
-            bookingOutput.innerHTML += `<tr class="tr"><td class="booking-td" id="${b.booking_id}"> ${b.booking_id}</td>
+    //Utskrift
+    bookings.forEach(b => {
+        bookingOutput.innerHTML += `<tr class="tr"><td class="booking-td" id="${b.booking_id}"> ${b.booking_id}</td>
         <td class="booking-td" id="${b.booking_id}"> ${b.booking_date}</td>
         <td class="booking-td" id="${b.booking_id}"> ${b.booking_time}</td>
         <td class="booking-td" id="${b.booking_id}"> ${b.guest_fname} ${b.guest_ename}</td>
@@ -71,21 +70,21 @@ function showBookings(bookings) {
         <td class="booking-td"><button class="edit-btn" data-id="${b.booking_id}">Redigera</td>
         <td class="booking-td" id="${b.booking_id}"> ${b.created}</td>
         </tr>`;
-        })
+    })
 
-        //Loopar igenom knapparna och lägger till en eventlistener som tar bort en rad med klick på raden
-        let deleteBtn = document.getElementsByClassName("delete-btn");
-        for (let y = 0; y < deleteBtn.length; y++) {
-            deleteBtn[y].addEventListener("click", deleteBooking);
-        }
-
-        //Loopar igenom ändra-knapparna och lägger till en eventlistener
-        let editBtn = document.getElementsByClassName("edit-btn");
-        for (let i = 0; i < editBtn.length; i++) {
-            editBtn[i].addEventListener("click", getWithId);
-
-        }
+    //Loopar igenom knapparna och lägger till en eventlistener som tar bort en rad med klick på raden
+    let deleteBtn = document.getElementsByClassName("delete-btn");
+    for (let y = 0; y < deleteBtn.length; y++) {
+        deleteBtn[y].addEventListener("click", deleteBooking);
     }
+
+    //Loopar igenom ändra-knapparna och lägger till en eventlistener
+    let editBtn = document.getElementsByClassName("edit-btn");
+    for (let i = 0; i < editBtn.length; i++) {
+        editBtn[i].addEventListener("click", getWithId);
+
+    }
+}
 
 
 
@@ -164,6 +163,8 @@ function deleteBooking(event) {
     if (localStorage.getItem("token") === null) {
         return;
     }
+
+    let token = localStorage.getItem("token");
 
 
     let bookingId = event.target.id;
