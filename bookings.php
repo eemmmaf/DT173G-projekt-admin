@@ -3,11 +3,11 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:21:45 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 02:26:42
+ * @Last Modified time: 2022-06-03 02:34:33
  */
 
  
-//Kontroll om session finns
+//Kontroll om session finns. Redirectar till login.php om det ej finns
 include('includes/header.php');
 if (!isset($_SESSION["admin"])) {
     header("Location: login.php");
