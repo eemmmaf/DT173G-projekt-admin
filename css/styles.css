@@ -1,0 +1,261 @@
+/*Fonts från google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Open+Sans:wght@500&display=swap');
+
+/*Reset*/
+html,
+body,
+ul,
+ol,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    background-color: #efeeff;
+}
+
+header {
+    background-color: #f6f7fb;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    padding: 1rem;
+    margin-top: 0;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-family: 'Open Sans', sans-serif;
+    color: #050062;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+h1 {
+    font-family: 'Heebo', sans-serif;
+}
+
+h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+table {
+    max-width: 1500px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #efeeff;
+    background-color: #753c5d;
+    color: #f6f7fb;
+}
+
+tr {
+    border-bottom: 1px solid #753c5d;
+}
+
+tr:hover {
+    background-color: #cecaca;
+}
+
+td {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    color: #050062;
+    padding: 2rem;
+    text-align: center;
+}
+
+form {
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 4rem auto;
+    background-color: #f6f7fb;
+    color: #050062;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+form h2 {
+    text-align: center;
+}
+
+label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.8rem;
+    color: #050062;
+    font-weight: bold;
+}
+
+
+select {
+    max-width: 200px;
+    width: 100%;
+    padding: 1rem;
+}
+
+input[type=submit] {
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 1.6rem;
+}
+
+textarea {
+    margin-bottom: 4rem;
+}
+
+.food-td-hidden {
+    display: none;
+}
+
+#login {
+    max-width: 450px;
+    width: 100%;
+    margin: 12rem auto auto auto;
+}
+
+input[type=text],
+input[type=password] {
+    max-width: 400px;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.desktop-nav li {
+    display: inline-block;
+    margin-right: 3rem;
+}
+
+.desktop-nav ul {
+    position: absolute;
+    right: 1.5rem;
+    top: 2rem;
+}
+
+.start-flex {
+    max-width: 1200px;
+    display: flex;
+    margin: auto;
+}
+
+.start-flex div {
+    background-color: #f6f7fb;
+}
+
+.booking,
+.menu {
+    max-width: 1500px;
+    width: 100%;
+    margin: auto;
+}
+
+.booking h2 {
+    text-align: center;
+}
+
+.menu h2 {
+    text-align: center;
+}
+
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=email],
+textarea {
+    max-width: 800px;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
+    border: 2px solid #efeeff;
+    background-color: #f6f7fb;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex div {
+    max-width: 800px;
+    width: 100%;
+    margin: 1rem;
+}
+
+.flex-btn {
+    border-top: 1px solid #120e4c;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#reset {
+    background-color: #780000;
+    color: #f6f7fb;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#reset:hover {
+    background-color: #c40505;
+}
+
+#submit-btn {
+    background-color: #8dde68;
+}
+
+#submit-btn:hover {
+    background-color: #518639;
+}
+
+#change-btn {
+    background-color: #efeeff;
+}
+
+#change-btn:hover {
+    background-color: #9491bc;
+}
+
+.table {
+    margin-bottom: 5rem;
+}
+
+table {
+    background-color: #f6f7fb;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#form-food select {
+    max-width: 800px;
+    width: 100%;
+
+}
