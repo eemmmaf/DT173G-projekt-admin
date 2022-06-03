@@ -3,7 +3,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:22:24 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 02:27:10
+ * @Last Modified time: 2022-06-03 12:12:15
  */
 
 
@@ -21,6 +21,7 @@ if (isset($_POST['username'])) {
 
     //kontrollerar att användarnamn och lösenord är ifyllda
     if (empty($username) || empty($password)) {
+        $errormessage = "<p class='error-p'>Fyll i användarnamn och lösenord</p>";
     } else {
         //Om användarnamn och lösenord är ifyllda, kontrollera att användaren finns i databasen via webbtjänsten = cURL anrop
 
@@ -41,29 +42,36 @@ if (isset($_POST['username'])) {
         $data = json_decode(curl_exec($curl), true);
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        
+
         //Om användaren finns i databasen
-        if($httpcode === 200) {
+        if ($httpcode === 200) {
             $_SESSION['admin'] = $username;
 
             header("Location: index.php");
         } else {
-            $errormsg = "<p class='error'><strong>Felaktigt användarnamn eller lösenord!</strong></p>";
+            $errormessage = "<p class='error-p'>Felaktigt användarnamn eller lösenord</p>";
         }
     }
 }
 
 ?>
-    <main>
-        <form id="login" method="POST" action="login.php">
-            <h2>Logga in som administratör</h2>
-            <!--Användarnamn-->
-            <label for="username">Användarnamn:</label>
-            <input type="text" name="username" id="username">
-            <label for="password">Lösenord:</label>
-            <input type="password" name="password" id="password">
-            <input type="submit" value="Logga in" id="login-btn" name="login-btn">
-        </form>
+<main>
+    <form id="login" method="POST" action="login.php">
+        <h2>Logga in som administratör</h2>
+        <div>
+            <?php
+            if (isset($errormessage)) {
+                echo $errormessage;
+            }
+            ?>
+        </div>
+        <!--Användarnamn-->
+        <label for="username">Användarnamn:</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Lösenord:</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="Logga in" id="login-btn" name="login-btn">
+    </form>
 </main>
 </body>
 
