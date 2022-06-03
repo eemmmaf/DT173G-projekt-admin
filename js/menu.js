@@ -2,12 +2,12 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:26 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 02:25:40
+ * @Last Modified time: 2022-06-03 19:43:59
  */
 
 "use strict";
 
-//url:en till webbtjänsten drinkapi och foodapi sparad i en variabler
+//url:en till webbtjänsten drinkapi och foodapi sparad i variabler
 let urlDrink = "http://localhost/projekt_webservice/drinkapi.php";
 let urlFood = "http://localhost/projekt_webservice/foodapi.php";
 
@@ -17,6 +17,11 @@ const foodPriceInput = document.getElementById("food-price");
 const foodCategoryInput = document.getElementById("food-category");
 const foodTypeInput = document.getElementById("food-type");
 const foodDescriptionInput = document.getElementById("food-description");
+//Variabel för utskrift av meddelande
+let messageData = document.getElementById("message-change");
+let outputFood = document.getElementById("message-food");
+let outputDrink = document.getElementById("output-drink");
+let outputDeleted = document.getElementById("deleted-menu");
 //Variabler för dryckens input fält
 const drinkNameInput = document.getElementById("drink-name");
 const drinkPriceInput = document.getElementById("drink-price");
@@ -121,6 +126,7 @@ function addFood(event) {
         body: jsonStr
     })
         .then(response => response.json())
+        .then(data => showFoodMessage(data))
         .then(data => clearInput())//Tömmer fälten
         .catch(err => console.log(err))
 }
@@ -159,6 +165,7 @@ function updateFood(event) {
         body: jsonStr
     })
         .then(response => response.json())
+        .then(data=> showDeletedMessage(data))
         .then(data => clearInput()) //Tömmer formulären
         .catch(err => console.log(err))
 }
@@ -175,6 +182,7 @@ function deleteFood(event) {
         "method": "DELETE",
     })
         .then(response => response.json())
+        .then(data => showDeletedMessage(data))
         .then(data => getFood()) //Hämtar maten på nytt
         .catch(err => console.log(err))
 }
@@ -224,6 +232,7 @@ function addDrink(event) {
         body: jsonStr
     })
         .then(response => response.json())
+        .then(data => showDrinkMessage(data))
         .then(data => clearDrinkInput(data))
         .catch(err => console.log(err))
 }
@@ -280,12 +289,14 @@ function deleteDrink(event) {
         "method": "DELETE",
     })
         .then(response => response.json())
+        .then(data=> showDeletedMessage(data))
         .then(data => getDrinks()) //Hämtar drycken
         .catch(err => console.log(err))
 }
 
 //Funktion för att uppdatera en dryck
 function updateDrink(event) {
+    event.preventDefault();
 
     //Sparar dryckens id i en variabel
     let drinkId = event.target.dataset.id;
@@ -315,6 +326,7 @@ function updateDrink(event) {
         body: jsonStr
     })
         .then(response => response.json())
+        .then(data => showDeletedMessage(data))
         .then(data => clearDrinkInput()) //Rensar formuläret
         .catch(err => console.log(err))
 }
@@ -343,6 +355,44 @@ function clearDrinkInput() {
     getDrinks();
 
 }
+
+function showMessage(data) {
+    if (messageData.innerHTML = "") {
+        messageData.innerHTML += `<p>${data["message"]}</p>`;
+    } else {
+        messageData.innerHTML += `<p>${data["message"]}</p>`;
+    }
+}
+
+//Funktion som visar meddelande i formuläret
+function showFoodMessage(data) {
+    if (outputFood.innerHTML = "") {
+        outputFood.innerHTML += `<p>${data["message"]}</p>`;
+    } else {
+        outputFood.innerHTML += `<p>${data["message"]}</p>`;
+    }
+}
+
+//Funktion som visar meddelande i dryckes-formuläret
+function showDrinkMessage(data) {
+    if (outputDrink.innerHTML = "") {
+        outputDrink.innerHTML += `<p>${data["message"]}</p>`;
+    } else {
+        outputDrink.innerHTML += `<p>${data["message"]}</p>`;
+    }
+}
+
+//Funktion som visar om en maträtt blivit borttagen
+function showDeletedMessage(data) {
+    if (outputDeleted.innerHTML = "") {
+        outputDeleted.innerHTML += `<p>${data["message"]}</p>`;
+    } else {
+        outputDeleted.innerHTML += `<p>${data["message"]}</p>`;
+    }
+}
+
+
+
 
 
 

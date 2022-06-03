@@ -2,7 +2,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:05 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 02:18:37
+ * @Last Modified time: 2022-06-03 19:43:52
  */
 
 "use strict";
@@ -21,11 +21,17 @@ const messageInput = document.getElementById("textmessage");
 //Lägga till bokning-knappen och ändra-knappen
 const submitBtn = document.getElementById("submit-btn");
 const changeBtn = document.getElementById("change-btn");
+
+//Ändra-knappen är disabled by default
+changeBtn.disabled = true;
+
 //Eventlisteners
 submitBtn.addEventListener("click", addBooking);
 
-//Output för bokning
+//Output för utskrifter vid bokning
 let outputMessage = document.getElementById("message-output");
+let deleteMessage = document.getElementById("delete-output");
+
 //Dagens datum
 let today = new Date().toISOString().slice(0, 10);
 
@@ -65,7 +71,7 @@ function showBookings(bookings) {
         <td class="booking-td" id="${b.booking_id}"> ${b.quantity}</td>
         <td class="booking-td" id="${b.booking_id}"> ${b.guest_text}</td>
         <td id="${b.booking_id}" class="booking-td"><button id="${b.booking_id}"class="delete-btn">Ta bort</button</td>
-        <td class="booking-td"><button class="edit-btn" id="${b.booking_id}">Redigera</td>
+        <td class="booking-td"><button class="edit-btn" id="${b.booking_id}">Ändra</td>
         <td class="booking-td" id="${b.booking_id}"> ${b.created}</td>
         </tr>`;
     })
@@ -119,7 +125,7 @@ function addBooking(event) {
         body: jsonStr
     })
         .then(response => response.json())
-        .then(data => showMessage(data)) //Anropar funktion som skriver ut meddelande
+        .then(data => showChangeMessage(data)) //Anropar funktion som skriver ut meddelande
         .then(data => clearFields()) //Tömmer input-fälten
         .catch(err => console.log(err))
 }
@@ -140,16 +146,6 @@ function clearFields() {
 
 }
 
-//Funktion för att visa meddelande
-function showMessage(data) {
-
-    if (outputMessage.innerHTML = "") {
-        outputMessage.innerHTML += `<p>${data["message"]}</p>`;
-    } else {
-        outputMessage.innerHTML += `<p>${data["message"]}</p>`;
-    }
-
-}
 
 //Funktion för att ta bort bokning med metoden DELETE
 function deleteBooking(event) {
@@ -164,8 +160,8 @@ function deleteBooking(event) {
         }
     })
         .then(response => response.json())
-        .then(data => showMessage(data)) //Visar meddelande
-        .then(data => getBookings())//Hämtar alla bokningar
+        .then(data => showDeleteMessage(data)) //Visar meddelande
+        .then(data => getBookings(data))
         .catch(err => console.log(err))
 }
 
@@ -209,8 +205,13 @@ function dataToForm(data) {
     emailInput.value = dataEmail;
     messageInput.value = dataMessage;
 
+    changeBtn.disabled = false;
     changeBtn.dataset.id = data.booking_id;
     changeBtn.addEventListener("click", sendChange);
+    submitBtn.disabled = true;
+
+    //Skrollar till botten av sidan till formuläret
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 //Funktion för fetch-anropet vid uppdatering av kurs
@@ -242,7 +243,7 @@ function sendChange(event) {
         body: jsonStr
     })
         .then(response => response.json())
-        .then(data => showMessage(data)) //Visar meddelande
+        .then(data => showChangeMessage(data)) //Visar meddelande
         .then(data => clearInput(data)) //Tömmer input
         .catch(err => console.log(err))
 }
@@ -261,4 +262,24 @@ function clearInput() {
 
     getBookings();
 }
+
+//Funktion som skriver ut felmeddelande vid borttagning av bokning
+function showDeleteMessage(data) {
+    if (deleteMessage.innerHTML = "") {
+        deleteMessage.innerHTML += `<p>${data["message"]}</p>`;
+    } else {
+        deleteMessage.innerHTML += `<p>${data["message"]}</p>`;
+    }
+}
+
+//Funktion för att visa meddelanden i formulären
+function showChangeMessage(data) {
+    if (outputMessage.innerHTML = "") {
+        outputMessage.innerHTML += `<p>${data["message"]}</p>`;
+    } else {
+        outputMessage.innerHTML += `<p>${data["message"]}</p>`;
+    }
+}
+
+
 
