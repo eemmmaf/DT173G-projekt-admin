@@ -3,10 +3,10 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:21:45 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 02:34:33
+ * @Last Modified time: 2022-06-03 19:31:55
  */
 
- 
+
 //Kontroll om session finns. Redirectar till login.php om det ej finns
 include('includes/header.php');
 if (!isset($_SESSION["admin"])) {
@@ -15,26 +15,30 @@ if (!isset($_SESSION["admin"])) {
 ?>
 <main>
     <section class="booking">
-        <h2>Bokningar</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Bokningsnummer</th>
-                    <th>Datum</th>
-                    <th>Tid</th>
-                    <th>Namn</th>
-                    <th>Mail</th>
-                    <th>Antal gäster</th>
-                    <th>Önskemål</th>
-                    <th>Ta bort</th>
-                    <th>Ändra</th>
-                    <th>Skapad</th>
-                </tr>
-            </thead>
-            <tbody id="booking-td">
+        <div id="delete-output"></div>
+        <div class="table">
+            <h2>Bokningar</h2>
+            <!--Utskrift av meddelande-->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bokningsnummer</th>
+                        <th>Datum</th>
+                        <th>Tid</th>
+                        <th>Namn</th>
+                        <th>Mail</th>
+                        <th>Antal gäster</th>
+                        <th>Önskemål</th>
+                        <th>Ta bort</th>
+                        <th>Ändra</th>
+                        <th>Skapad</th>
+                    </tr>
+                </thead>
+                <tbody id="booking-td">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </section>
     <form id="form-bookings">
         <h2>Hantera bokning</h2>
@@ -43,12 +47,12 @@ if (!isset($_SESSION["admin"])) {
         <div class="flex">
             <!--Kursnamn-->
             <div>
-                <label for="fname">Förnamn:</label><br><br>
+                <label for="fname">Förnamn:<span class="required">*</span></label><br><br>
                 <input type="text" id="fname" name="fname"><br>
             </div>
             <div>
 
-                <label for="ename">Efternamn:</label><br><br>
+                <label for="ename">Efternamn:<span class="required">*</span></label><br><br>
                 <input type="text" id="ename" name="ename"><br>
 
             </div>
@@ -56,7 +60,7 @@ if (!isset($_SESSION["admin"])) {
         <!--Datum och tid-->
         <div class="flex">
             <div>
-                <label for="date">Datum: <span class="required">*</span></label><br><br>
+                <label for="date">Datum:<span class="required">*</span></label><br><br>
                 <div id="error-date"></div>
                 <div class="icon-flex">
                     <input type="date" id="date" name="date"><br><br><br>
@@ -65,12 +69,12 @@ if (!isset($_SESSION["admin"])) {
 
             </div>
             <div>
-                <label for="time">Tid: <span class="required">*</span></label><br><br>
+                <label for="time">Tid:<span class="required">*</span></label><br><br>
                 <div id="error-time"></div>
                 <div class="icon-flex">
                     <select name="time" id="time">
 
-                        <option value="">Tid:</option>
+                        <option value="">Tid:<span class="required">*</span></option>
                         <option value="15:00">15:00</option>
                         <option value="15:30">15:30</option>
                         <option value="16:00">16:00</option>
@@ -93,7 +97,7 @@ if (!isset($_SESSION["admin"])) {
         </div>
         <div class="flex">
             <div>
-                <label for="quantity">Antal personer:</label><br><br>
+                <label for="quantity">Antal personer:<span class="required">*</span></label><br><br>
                 <select name="quantity" id="quantity">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -108,13 +112,13 @@ if (!isset($_SESSION["admin"])) {
                 </select>
             </div>
             <div>
-                <label for="email">Gästens mailadress:</label><br><br>
-                <input type="email" id="email" name="email"><br>
+                <label for="email">Gästens mailadress:<span class="required">*</span></label><br><br>
+                <input type="email" id="email" name="email"><br><br><br>
             </div>
         </div>
         <div>
-            <label for="textmessage">Önskemål</label><br><br>
-<textarea name="textmessage" id="textmessage" rows="4" cols="50"></textarea>
+            <label for="textmessage">Önskemål(Frivilligt)</label><br><br>
+            <textarea name="textmessage" id="textmessage" rows="4" cols="50"></textarea>
         </div>
         <!--Skicka-->
         <div class="flex-btn">
@@ -125,6 +129,7 @@ if (!isset($_SESSION["admin"])) {
     </form>
 </main>
 <footer>
+    <p>Emma Forslund | Trattoria Romantico | emfo2102@student.miun.se</p>
     <script src="js/bookings.js"></script>
 </footer>
 
