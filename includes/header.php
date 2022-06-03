@@ -2,8 +2,8 @@
 /*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:24:30 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-06-01 15:24:30 
+ * @Last Modified by: Emma Forslund - emfo2102
+ * @Last Modified time: 2022-06-03 19:52:48
  */
 
 include_once("includes/config.php");
@@ -21,17 +21,19 @@ include_once("includes/config.php");
 
 <body>
     <header>
-        <h1>Admin</h1> <?php
-        //Gör en kontroll om en session är startad. Om session finns skrivs menyn ut
-                        if (isset($_SESSION['admin'])) { ?>
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="menu.php">Hantera meny</a></li>
-                    <li><a class="active" href="bookings.php">Bokningar</a></li>
-                    <a class="logout-btn" href="logout.php">Logga ut</a>
-                </ul>
-            </nav>
-        <?php
-                        }
-        ?>
+        <div class="header">
+            <a href="index.php"><img src="loggan.svg" alt=""></a> <?php
+                                                                    //Gör en kontroll om en session är startad. Om session finns skrivs menyn ut
+                                                                    if (isset($_SESSION['admin'])) { ?>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="menu.php">Hantera meny</a></li>
+                        <li><a class="active" href="bookings.php">Bokningar</a></li>
+                        <a class="logout-btn" href="logout.php">Logga ut</a>
+                    </ul>
+                </nav>
+            <?php
+                                                                    }
+            ?>
+        </div>
     </header>
