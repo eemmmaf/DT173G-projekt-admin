@@ -1,3 +1,11 @@
+/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-06-04 18:43:44 
+ * @Last Modified by: Emma Forslund - emfo2102
+ * @Last Modified time: 2022-06-04 19:02:27
+ */
+
+
 /*Fonts från google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Open+Sans:wght@500&display=swap');
 
@@ -44,6 +52,7 @@ a:hover {
 
 h1 {
     font-family: 'Heebo', sans-serif;
+    font-size: 3rem;
 }
 
 h2 {
@@ -54,13 +63,27 @@ h2 {
 h3 {
     font-family: 'Heebo', sans-serif;
     font-size: 2.4rem;
-    text-align: center;
+}
+
+p,
+li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.8rem;
+    color: #050062;
+}
+
+ul {
+    list-style-type: none;
 }
 
 table {
     max-width: 1500px;
     width: 100%;
     border-collapse: collapse;
+}
+
+.table h3 {
+    text-align: center;
 }
 
 th {
@@ -115,12 +138,22 @@ select {
     padding: 1rem;
 }
 
+#form-drink {
+    background-color: #fbecf4;
+}
+
 input[type=submit] {
     border: none;
     padding: 1rem;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 1.6rem;
+    background-color: #030032;
+    color: white;
+}
+
+input[type=submit]:hover {
+    background-color: #bcb9e2;
 }
 
 textarea {
@@ -137,12 +170,42 @@ textarea {
     margin: 12rem auto auto auto;
 }
 
-input[type=text],
-input[type=password] {
-    max-width: 400px;
-    width: 100%;
-    padding: 0.5rem;
+img {
+    max-width: 100%;
+}
+
+#login input {
+    margin-bottom: 2rem;
     margin-top: 0.5rem;
+}
+
+#login-btn {
+    margin: 2rem auto;
+    display: block;
+    max-width: 250px;
+    width: 100%;
+    background-color: #030032;
+    color: #eeeeee;
+    font-size: 1.8rem;
+}
+
+#login-btn:hover {
+    background-color: #050062;
+}
+
+.error-p {
+    color: #c80b0b;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.6rem;
+    background-color: white;
+    border: 2px solid #c80b0b;
+    padding: 1rem;
+}
+
+#message-output p {
+    text-align: center;
+    font-weight: bold;
 }
 
 .desktop-nav li {
@@ -166,11 +229,59 @@ input[type=password] {
     background-color: #f6f7fb;
 }
 
+/*Utskrift av meddelande från JS*/
+#delete-output p,
+#message-food,
+#output-drink,
+#deleted-menu {
+    text-align: center;
+    font-weight: bold;
+}
+
 .booking,
 .menu {
     max-width: 1500px;
     width: 100%;
     margin: auto;
+}
+
+.required {
+    color: #c40505;
+}
+
+button {
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.delete-drink-btn,
+.delete-btn {
+    background-color: #780000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.delete-drink-btn:hover,
+.delete-btn:hover {
+    background-color: #df2525;
+}
+
+.edit-drink-btn,
+.edit-btn {
+    background-color: #780050;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.edit-drink-btn:hover,
+.edit-btn:hover {
+    background-color: #753c5d;
 }
 
 .booking h2 {
@@ -185,6 +296,7 @@ input[type=text],
 input[type=email],
 input[type=number],
 input[type=email],
+input[type=password],
 textarea {
     max-width: 800px;
     width: 100%;
@@ -214,6 +326,15 @@ textarea:focus {
     padding-top: 3rem;
     display: flex;
     justify-content: space-between;
+    overflow-x: hidden;
+}
+
+/*Centrerar knapparna*/
+.food-submit-btn,
+.drink-submit-btn{
+    margin: auto;
+    max-width:250px;
+    width: 100%;
 }
 
 #reset {
@@ -231,6 +352,7 @@ textarea:focus {
 
 #submit-btn {
     background-color: #8dde68;
+    color: black;
 }
 
 #submit-btn:hover {
@@ -238,7 +360,8 @@ textarea:focus {
 }
 
 #change-btn {
-    background-color: #efeeff;
+    background-color: #050062;
+    color: white;
 }
 
 #change-btn:hover {
@@ -247,6 +370,7 @@ textarea:focus {
 
 .table {
     margin-bottom: 5rem;
+    overflow-x: auto;
 }
 
 table {
@@ -258,4 +382,101 @@ table {
     max-width: 800px;
     width: 100%;
 
+}
+
+.index-section {
+    max-width: 1000px;
+    width: 100%;
+    margin: 5rem auto;
+    padding: 1rem 2rem;
+    background-color: #f6f5f8;
+}
+
+.index-section a {
+    color: #050062;
+}
+
+.index-section li {
+    margin-top: 1rem;
+}
+
+.aktuellt {
+    margin: auto;
+    max-width: 800px;
+    width: 100%;
+    padding: 1rem;
+}
+
+#aktuellt {
+    max-width: 1000px;
+    width: 100%;
+    margin: 5rem auto;
+    padding: 1rem 2rem;
+    background-color: #f6f5f8;
+    border-top: 4px solid #753c5d;
+}
+
+#aktuellt h2 {
+    text-align: center;
+}
+
+
+/*Footer*/
+
+footer {
+    background-color: #030032;
+    padding: 1rem;
+}
+
+footer p {
+    color: #dcdbee;
+    text-align: center;
+}
+
+/*Media quiries för skärmar under 720px*/
+@media only screen and (max-width: 720px) {
+    .footer {
+        position: static;
+    }
+
+    nav a {
+        font-size: 1.8rem;
+    }
+}
+
+/*Media quiries för skärmar under 630px*/
+@media only screen and (max-width: 630px) {
+    .desktop-nav ul {
+        position: absolute;
+        top: 8rem;
+        left: 0;
+        background-color: #f6f7fb;
+        width: 100%;
+        padding-bottom: 2rem;
+        padding-top: 0.5rem;
+    }
+
+    .header {
+        text-align: center
+    }
+
+    header {
+        padding: 2rem;
+    }
+
+    main {
+        margin-top: 6rem;
+        padding: 1rem;
+    }
+
+    form{
+        padding: 1rem;
+    }
+}
+
+/*Media quiries för skärmar under 400px*/
+@media only screen and (max-width: 400px) {
+    nav a {
+        font-size: 1.6rem;
+    }
 }
