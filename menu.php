@@ -3,7 +3,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:22:53 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 02:29:25
+ * @Last Modified time: 2022-06-04 18:51:06
  */
 
 //Kontroll om session finns. Redirectar till login.php om det ej finns
@@ -15,12 +15,12 @@ if (!isset($_SESSION["admin"])) {
 <main>
     <!--Sektion för att hantera menyn-->
     <section class="menu">
+        <div id="deleted-menu"></div>
         <h2>Hantera meny</h2>
-
         <!--Tabell för utskrift av förrätter-->
         <div class="table">
+            <h3>Förrätter</h3>
             <table>
-                <h3>Förrätter</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -39,8 +39,8 @@ if (!isset($_SESSION["admin"])) {
 
         <!--Tabell för utskrift av varmrätter-->
         <div class="table">
+            <h3>Varmrätter</h3>
             <table>
-                <h3>Varmrätter</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -59,8 +59,8 @@ if (!isset($_SESSION["admin"])) {
 
         <!--Tabell för utskrift av Efterrätter-->
         <div class="table">
+            <h3>Efterrätter</h3>
             <table>
-                <h3>Efterrätter</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -79,8 +79,8 @@ if (!isset($_SESSION["admin"])) {
 
         <!--Tabell för utskrift av vita viner-->
         <div class="table">
+            <h3>Vitt vin</h3>
             <table>
-                <h3>Vitt vin</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -99,8 +99,8 @@ if (!isset($_SESSION["admin"])) {
 
         <!--Tabell för utskrift av röda viner-->
         <div class="table">
+            <h3>Rött vin</h3>
             <table>
-                <h3>Rött vin</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -119,8 +119,8 @@ if (!isset($_SESSION["admin"])) {
 
         <!--Tabell för utskrift av öl-->
         <div class="table">
+            <h3>Öl</h3>
             <table>
-                <h3>Öl</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -139,8 +139,8 @@ if (!isset($_SESSION["admin"])) {
 
         <!--Tabell för utskrift av Alkoholfritt-->
         <div class="table">
+            <h3>Alkoholfritt</h3>
             <table>
-                <h3>Alkoholfritt</h3>
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -162,6 +162,8 @@ if (!isset($_SESSION["admin"])) {
     <!--Formulär för att lägga till och Uppdatera bokning-->
     <form id="form-food">
         <h2>Lägg till maträtt</h2>
+        <!--Utskrift av meddelande från JS-->
+        <div id="message-food"></div>
         <!--Kurskod-->
         <div class="flex">
             <!--Kursnamn-->
@@ -198,19 +200,18 @@ if (!isset($_SESSION["admin"])) {
         </div>
         <div>
             <label for="food-description">Beskrivning</label><br><br>
-            <textarea name="food-description" id="food-description" rows="4" cols="50">
-    </textarea>
+            <textarea name="food-description" id="food-description" rows="4" cols="50"></textarea>
         </div>
         <!--Skicka-->
         <div class="flex-btn">
             <input type="submit" class="food-submit-btn" value="Lägg till maträtt" id="food-submit-btn">
-            <button id="reset" class="reset">Rensa fälten</button>
         </div>
     </form>
 
     <!--Formulär nummer 2 för drickor-->
     <form id="form-drink">
         <h2>Lägg till dryck</h2>
+        <div id="output-drink"></div>
         <!--Kurskod-->
         <div class="flex">
             <!--Kursnamn-->
@@ -242,11 +243,11 @@ if (!isset($_SESSION["admin"])) {
         <!--Skicka-->
         <div class="flex-btn">
             <input type="submit" class="drink-submit-btn" value="Lägg till dryck" id="drink-submit-btn">
-            <button id="reset" class="reset">Rensa fälten</button>
         </div>
     </form>
 </main>
 <footer>
+    <p>Emma Forslund | Trattoria Romantico | emfo2102@student.miun.se</p>
     <script src="js/menu.js"></script>
 </footer>
 

@@ -3,7 +3,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:21:45 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 19:31:55
+ * @Last Modified time: 2022-06-04 20:07:34
  */
 
 
@@ -74,7 +74,7 @@ if (!isset($_SESSION["admin"])) {
                 <div class="icon-flex">
                     <select name="time" id="time">
 
-                        <option value="">Tid:<span class="required">*</span></option>
+                        <option value="">Tid:</option>
                         <option value="15:00">15:00</option>
                         <option value="15:30">15:30</option>
                         <option value="16:00">16:00</option>
@@ -124,7 +124,6 @@ if (!isset($_SESSION["admin"])) {
         <div class="flex-btn">
             <input type="submit" class="submit-btn" value="Lägg till bokning" id="submit-btn">
             <input type="submit" id="change-btn" value="Uppdatera bokningen" class="change-btn">
-            <button id="reset" class="reset">Rensa fälten</button>
         </div>
     </form>
 </main>

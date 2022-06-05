@@ -3,7 +3,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:24:30 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 19:52:48
+ * @Last Modified time: 2022-06-04 18:46:11
  */
 
 include_once("includes/config.php");
@@ -29,7 +29,7 @@ include_once("includes/config.php");
                     <ul>
                         <li><a href="menu.php">Hantera meny</a></li>
                         <li><a class="active" href="bookings.php">Bokningar</a></li>
-                        <a class="logout-btn" href="logout.php">Logga ut</a>
+                        <li><a class="logout-btn" href="logout.php">Logga ut</a></li>
                     </ul>
                 </nav>
             <?php

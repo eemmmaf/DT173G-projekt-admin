@@ -3,7 +3,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:22:08 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 13:26:20
+ * @Last Modified time: 2022-06-04 18:47:35
  */
 
 include('includes/header.php');
@@ -30,7 +30,7 @@ if (!isset($_SESSION["admin"])) {
             <ul>
                 <li>076 101 54 74</li>
             </ul>
-            </div>
+        </article>
     </section>
     <section id="aktuellt">
         <h2>Aktuellt</h2>
