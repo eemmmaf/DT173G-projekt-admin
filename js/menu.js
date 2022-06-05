@@ -2,14 +2,14 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:26 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-04 19:50:17
+ * @Last Modified time: 2022-06-05 15:18:53
  */
 
 "use strict";
 
 //url:en till webbtjänsten drinkapi och foodapi sparad i variabler
-let urlDrink = "http://localhost/projekt_webservice/drinkapi.php";
-let urlFood = "http://localhost/projekt_webservice/foodapi.php";
+let urlDrink = "https://studenter.miun.se/~emfo2102/writeable/projekt_webservice/drinkapi.php";
+let urlFood = "https://studenter.miun.se/~emfo2102/writeable/projekt_webservice/foodapi.php";
 
 //Variabler för matens inputfält
 const foodNameInput = document.getElementById("food-name");
@@ -266,16 +266,16 @@ function showDrink(drinks) {
     //skriver ut drycken beroende på vilken kategori de tillhör
     drinks.forEach(drink => {
         if (drink.drink_category_id == "1") {
-            whiteOutput.innerHTML += ` <td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}"> ${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
+            whiteOutput.innerHTML += ` <td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}">${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
         }
         if (drink.drink_category_id == "2") {
-            redOutput.innerHTML += ` <td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}"> ${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
+            redOutput.innerHTML += ` <td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}">${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
         }
         if (drink.drink_category_id == "3") {
-            beerOutput.innerHTML += `<td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}"> ${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
+            beerOutput.innerHTML += `<td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}">${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
         }
         if (drink.drink_category_id == "4") {
-            nonAlcoOutput.innerHTML += ` <td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}"> ${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
+            nonAlcoOutput.innerHTML += ` <td contenteditable class="food-td" id="drinkname${drink.drink_id}"> ${drink.drink_name} </td><td contenteditable class="food-td" id="drinkprice${drink.drink_id}">${drink.drink_price}</td><td contenteditable class="food-td" id="drinkdescription${drink.drink_id}"> ${drink.drink_description}</td><td id="${drink.drink_id}" class="food-td"><button id="${drink.drink_id}"class="delete-drink-btn">Ta bort</button</td> <td><button class="edit-drink-btn" data-id="${drink.drink_id}">Uppdatera</td> <td class="food-td-hidden" id="drinkcategory${drink.drink_id}"> ${drink.drink_category_id}</td><tr>`;
         }
     })
 

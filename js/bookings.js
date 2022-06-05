@@ -2,12 +2,12 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:05 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-04 21:42:07
+ * @Last Modified time: 2022-06-05 14:13:30
  */
 
 "use strict";
 
-let bookingUrl = "http://localhost/projekt_webservice/bookingapi.php";
+let bookingUrl = "https://studenter.miun.se/~emfo2102/writeable/projekt_webservice/bookingapi.php";
 
 //variabler för bokningens inputfält
 const fnameInput = document.getElementById("fname");
@@ -212,9 +212,12 @@ function dataToForm(data) {
     emailInput.value = dataEmail;
     messageInput.value = dataMessage;
 
+    //Gör att ändra-knappen inte är disabled längre
     changeBtn.disabled = false;
     changeBtn.dataset.id = data.booking_id;
+    //Lägger till eventListener 
     changeBtn.addEventListener("click", sendChange);
+    //Gör att lägga till-knappen är disabled
     submitBtn.disabled = true;
 
     //Skrollar till botten av sidan till formuläret

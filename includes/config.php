@@ -2,8 +2,8 @@
 /*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:24:09 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-06-01 15:24:09 
+ * @Last Modified by: Emma Forslund - emfo2102
+ * @Last Modified time: 2022-06-05 19:27:35
  */
 
 
@@ -15,8 +15,8 @@ spl_autoload_register(function ($class_name) {
 //aktivera sessioner
 session_start();
 
-//Variabel för inställning av databasanslutnings-uppgifter
-$developer = true;
+//Variabel för inställning av databasanslutnings-uppgifter. Sätts till false vid uppladning till miuns server
+$developer = false;
 if($developer){
 //Databasanslutning lokal server
 define("DBHOST", "localhost");
