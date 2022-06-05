@@ -3,7 +3,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:22:24 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 12:12:15
+ * @Last Modified time: 2022-06-05 11:57:36
  */
 
 
@@ -25,12 +25,12 @@ if (isset($_POST['username'])) {
     } else {
         //Om användarnamn och lösenord är ifyllda, kontrollera att användaren finns i databasen via webbtjänsten = cURL anrop
 
-        //POST med cURL
-        $url = 'http://localhost/projekt_webservice/loginapi.php'; //instansiera ny cURL session
+        //POST med cURL. Sparar länken till API:et i variabeln $url
+        $url = 'https://studenter.miun.se/~emfo2102/writeable/projekt_webservice/loginapi.php'; //instansiera ny cURL session
         $curl = curl_init();
-        //array
+        //array med username och password
         $user = array("username" => $username, "password" => $password);
-        //omvandlar till json
+        //omvandlar $user-arrayen till json med json_encode
         $json_string = json_encode($user);
         //inställningar för cURL
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -38,6 +38,7 @@ if (isset($_POST['username'])) {
         curl_setopt($curl, CURLOPT_POSTFIELDS, $json_string);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
         //Response och statuskod
         $data = json_decode(curl_exec($curl), true);
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -59,6 +60,7 @@ if (isset($_POST['username'])) {
     <form id="login" method="POST" action="login.php">
         <h2>Logga in som administratör</h2>
         <div>
+            <!--Utskrift av felmeddelanden-->
             <?php
             if (isset($errormessage)) {
                 echo $errormessage;
@@ -68,8 +70,10 @@ if (isset($_POST['username'])) {
         <!--Användarnamn-->
         <label for="username">Användarnamn:</label>
         <input type="text" name="username" id="username">
+        <!--Lösenord-->
         <label for="password">Lösenord:</label>
         <input type="password" name="password" id="password">
+        <!--Skicka-->
         <input type="submit" value="Logga in" id="login-btn" name="login-btn">
     </form>
 </main>
