@@ -2,7 +2,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:05 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 19:43:52
+ * @Last Modified time: 2022-06-04 21:42:07
  */
 
 "use strict";
@@ -106,28 +106,35 @@ function addBooking(event) {
     let email = emailInput.value;
     let message = messageInput.value;
 
-    //Gör om till JSON-format
-    let jsonStr = JSON.stringify({
-        booking_date: date,
-        booking_time: time,
-        guest_fname: fname,
-        guest_ename: ename,
-        guest_email: email,
-        guest_text: message,
-        quantity: quantity
-    });
+    //Gör en kontroll om något fält är tomt eller NULL
+    if (fname && ename && time && date && quantity && email && message == "" || null) {
+        outputMessage.innerHTML += `<p>${data["message"]}</p>`;
+    }
+    else {
 
-    fetch(bookingUrl, {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: jsonStr
-    })
-        .then(response => response.json())
-        .then(data => showChangeMessage(data)) //Anropar funktion som skriver ut meddelande
-        .then(data => clearFields()) //Tömmer input-fälten
-        .catch(err => console.log(err))
+        //Gör om till JSON-format
+        let jsonStr = JSON.stringify({
+            booking_date: date,
+            booking_time: time,
+            guest_fname: fname,
+            guest_ename: ename,
+            guest_email: email,
+            guest_text: message,
+            quantity: quantity
+        });
+
+        fetch(bookingUrl, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: jsonStr
+        })
+            .then(response => response.json())
+            .then(data => showChangeMessage(data)) //Anropar funktion som skriver ut meddelande
+            .then(data => clearFields()) //Tömmer input-fälten
+            .catch(err => console.log(err))
+    }
 }
 
 

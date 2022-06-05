@@ -2,7 +2,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:26 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-03 19:43:59
+ * @Last Modified time: 2022-06-04 19:50:17
  */
 
 "use strict";
@@ -108,27 +108,34 @@ function addFood(event) {
     let foodType = foodTypeInput.value;
     let foodDescription = foodDescriptionInput.value;
 
-    //Gör om till JSON-format
-    let jsonStr = JSON.stringify({
-        food_name: foodName,
-        food_description: foodDescription,
-        food_price: foodPrice,
-        food_category_id: foodCategory,
-        food_type_id: foodType
-    });
+    //Gör en kontroll om något fält är tomt eller NULL
+    if (foodName && foodPrice && foodCategory && foodType && foodDescription == "" || null) {
+        messageData.innerHTML += `<p>${data["message"]}</p>`
+    } else {
 
-    //Fetch-anrop med POST
-    fetch(urlFood, {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: jsonStr
-    })
-        .then(response => response.json())
-        .then(data => showFoodMessage(data))
-        .then(data => clearInput())//Tömmer fälten
-        .catch(err => console.log(err))
+        //Gör om till JSON-format
+        let jsonStr = JSON.stringify({
+            food_name: foodName,
+            food_description: foodDescription,
+            food_price: foodPrice,
+            food_category_id: foodCategory,
+            food_type_id: foodType
+        });
+
+
+        //Fetch-anrop med POST
+        fetch(urlFood, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: jsonStr
+        })
+            .then(response => response.json())
+            .then(data => showFoodMessage(data))
+            .then(data => clearInput())//Tömmer fälten
+            .catch(err => console.log(err))
+    }
 }
 
 
@@ -165,7 +172,7 @@ function updateFood(event) {
         body: jsonStr
     })
         .then(response => response.json())
-        .then(data=> showDeletedMessage(data))
+        .then(data => showDeletedMessage(data))
         .then(data => clearInput()) //Tömmer formulären
         .catch(err => console.log(err))
 }
@@ -215,26 +222,31 @@ function addDrink(event) {
     let drinkCategory = drinkCategoryInput.value;
     let drinkDescription = drinkDescriptionInput.value;
 
-    //Gör om till JSON-format
-    let jsonStr = JSON.stringify({
-        drink_name: drinkName,
-        drink_description: drinkDescription,
-        drink_price: drinkPrice,
-        drink_category_id: drinkCategory
-    });
+    //Gör en kontroll om något fält är tomt eller NULL
+    if (drinkName && drinkPrice && drinkCategory && drinkDescription == "" || null) {
+        outputDrink.innerHTML += `<p>${data["message"]}</p>`
+    } else {
+        //Gör om till JSON-format
+        let jsonStr = JSON.stringify({
+            drink_name: drinkName,
+            drink_description: drinkDescription,
+            drink_price: drinkPrice,
+            drink_category_id: drinkCategory
+        });
 
-    //Post-anrop som lagrar i databasen
-    fetch(urlDrink, {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: jsonStr
-    })
-        .then(response => response.json())
-        .then(data => showDrinkMessage(data))
-        .then(data => clearDrinkInput(data))
-        .catch(err => console.log(err))
+        //Post-anrop som lagrar i databasen
+        fetch(urlDrink, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: jsonStr
+        })
+            .then(response => response.json())
+            .then(data => showDrinkMessage(data))
+            .then(data => clearDrinkInput(data))
+            .catch(err => console.log(err))
+    }
 }
 
 
@@ -289,7 +301,7 @@ function deleteDrink(event) {
         "method": "DELETE",
     })
         .then(response => response.json())
-        .then(data=> showDeletedMessage(data))
+        .then(data => showDeletedMessage(data))
         .then(data => getDrinks()) //Hämtar drycken
         .catch(err => console.log(err))
 }
