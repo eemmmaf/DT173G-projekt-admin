@@ -1,13 +1,12 @@
 # DT173G - Projektuppgift - Administrationsgränssnitt
 Skapad av Emma Forslund, emfo2102@student.miun.se
 
-Detta repo innehåller filerna till administrationsgränssnittet. Administrationsgränssnittet är en lösenordsskyddad webbplats där admin-personal kan hantera restaurangens matsedel, innehållande maträtter och dryck. Personalen ser innehållet i menyn, kan uppdatera, lägga till och ta bort saker från menyn. På webbplatsen kan även personalen se bordsbokningar, ta bort, skapa bokningar och uppdatera bokningar. PHP, cURL, HTML och JavaScript har använts i detta repo.
+Detta repo innehåller filerna till administrationsgränssnittet. Administrationsgränssnittet är en lösenordsskyddad webbplats där admin-personal kan hantera restaurangens matsedel, innehållande maträtter och dryck. Personalen ser innehållet i menyn, kan uppdatera, lägga till och ta bort saker från menyn. På webbplatsen kan även personalen se bordsbokningar, ta bort, skapa bokningar och uppdatera bokningar. PHP, cURL, HTML och JavaScript har använts i detta repo. Denna webbplatsen använder en REST-webbtjänst som är skapad som en annan del av detta projekt. 
 
 ## Länkar:
 * Länk till administrationsgränssnitt: https://studenter.miun.se/~emfo2102/writeable/projekt_admin/login.php
 Användarnamn: Admin
 Lösenord: Password
-* Länk till inloggningsapi : https://studenter.miun.se/~emfo2102/writeable/projekt_webservice/loginapi.php
 * Publik webbplats: https://studenter.miun.se/~emfo2102/writeable/trattoriaromantico/index.html
 
 ### Login.php
@@ -25,3 +24,4 @@ Denna sida länkas i huvudnavigeringen. Om användaren trycker på "logout.php" 
 ## Klona detta repo
 git clone https://github.com/Webbutvecklings-programmet/projekt_admin_vt22-eemmmaf.git
 
+/ Emma Forslund, emfo2102@student.miun.se, 2022
