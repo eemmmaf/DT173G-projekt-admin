@@ -2,7 +2,7 @@
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-06-01 15:23:05 
  * @Last Modified by: Emma Forslund - emfo2102
- * @Last Modified time: 2022-06-05 14:13:30
+ * @Last Modified time: 2022-06-07 03:11:46
  */
 
 "use strict";
@@ -107,8 +107,8 @@ function addBooking(event) {
     let message = messageInput.value;
 
     //Gör en kontroll om något fält är tomt eller NULL
-    if (fname && ename && time && date && quantity && email && message == "" || null) {
-        outputMessage.innerHTML += `<p>${data["message"]}</p>`;
+    if (fname && ename && time && date && quantity && email  == "" || null) {
+        outputMessage.innerHTML += `<p>Kontrollera fälten och försök igen</p>`;
     }
     else {
 
