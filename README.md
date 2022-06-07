@@ -5,7 +5,7 @@ Detta repo innehåller filerna till administrationsgränssnittet. Administration
 
 ## Länkar:
 * Länk till administrationsgränssnitt: https://studenter.miun.se/~emfo2102/writeable/projekt_admin/login.php
-Användarnamn: Admin
+Användarnamn: Admin  
 Lösenord: Password
 * Publik webbplats: https://studenter.miun.se/~emfo2102/writeable/trattoriaromantico/index.html
 
